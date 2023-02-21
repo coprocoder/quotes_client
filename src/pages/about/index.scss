@@ -1,0 +1,11 @@
+@import "../../Text.scss";
+
+.about {
+    .about-title {
+        @include setFontSize(2);
+    }
+    .about-links {
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Routes, Route, HashRouter} from "react-router-dom";
+import loadable from "@loadable/component";
+
+const Waiter = () => <div>WAIT</div>;
+
+const AboutPage = loadable(() => import("./pages/about"), {
+  fallback: <Waiter />,
+});
+
+const QuotesPage = loadable(() => import("./pages/quotes"), {
+  fallback: <Waiter />,
+});
+
+const NotFound = () => <div>Page Not Found</div>;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Routes>
+        <Route exact path="/" element={<AboutPage />} />
+        <Route path="/quotes" element={<QuotesPage />} />
+        <Route path="/quotes/:id" element={<QuotesPage />} />
+        <Route element={<NotFound />} />
+      </Routes>
+    </HashRouter>
   );
 }
 
