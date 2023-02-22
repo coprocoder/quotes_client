@@ -1,0 +1,50 @@
+@import "../../Text.scss";
+
+.quotesPage {
+    background-color: var(--bgSecondary);
+    margin: auto;
+    max-width: 900px;
+    padding: 1rem;
+    margin: 4em auto;
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .quotesPage-backBtn {
+            @include setFontSize(3);
+            &::before {
+                content: "\276E";
+                margin-right: 0.5em;
+            }
+        }
+        .quotesPage-animIndicator {
+            @include setFontSize(3);
+        }
+    }
+    &-tabSelector {
+        display: flex;
+        flex-direction: row;
+        .quotesPage-tabSelection {
+            cursor: pointer;
+            border: 1px solid var(--gray);
+            border-radius: 0.2em;
+            color: var(--textSecondary);
+
+            margin: 1em 0.5em 1em 0;
+            padding: 0.2em;
+            font-weight: bold;
+            &:nth-child(1) {
+                margin-left: 0;
+            }
+            &:nth-last-child(1) {
+                margin-right: 0;
+            }
+            &-active {
+                // color: var(--textSecondary)
+                color: var(--textPrimary);
+            }
+        }
+    }
+    &-tab {
+    }
+}

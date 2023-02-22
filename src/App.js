@@ -2,10 +2,10 @@ import React from "react";
 import {Routes, Route, HashRouter} from "react-router-dom";
 import loadable from "@loadable/component";
 
+import Waiter from "./components/waiter";
+
 import "./App.scss";
 import "./Text.scss";
-
-const Waiter = () => <div>WAIT</div>;
 
 const AboutPage = loadable(() => import("./pages/about"), {
   fallback: <Waiter />,

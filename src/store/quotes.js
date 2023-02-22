@@ -1,6 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 class Quotes {
+  loading = false;
   quotesObjPart1 = {};
   quotesObjPart2 = {};
 
@@ -23,11 +24,15 @@ class Quotes {
       this.quotesObjPart2 = {...this.quotesObjPart2, ...ob2} || {};
     };
 
+    this.loading = true;
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
-        console.log({res});
         splitQuotesHalf(res);
+        this.loading = false;
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 }

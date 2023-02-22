@@ -8,12 +8,12 @@ const AboutPage = () => {
     <div className="about">
       <div className="about-title">О приложении</div>
       <div className="about-links">
-        <button>
-          <Link to="/quotes/1">Quotes Tab 1</Link>
-        </button>
-        <div>
-          <Link to="/quotes/2">Quotes Tab 2</Link>
-        </div>
+        <Link to="/quotes/1" className="about-linkBtn">
+          Котировки А
+        </Link>
+        <Link to="/quotes/2" className="about-linkBtn">
+          Котировки Б
+        </Link>
       </div>
     </div>
   );
