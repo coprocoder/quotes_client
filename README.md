@@ -13,7 +13,6 @@
 	<li>React</li>
  </ul>
 
-Макет: https://marvelapp.com/prototype/ifc07ih/screen/88547090/handoff
 
 ## УСТАНОВКА
 
@@ -40,7 +39,7 @@ git clone https://coprocoder.github.io/SportVokrug/
 ### Установка проекта
 
 ```
-git clone https://github.com/coprocoder/SportVokrug.git
+git clone https://github.com/coprocoder/quotes_client.git
 cd <путь до папки проекта>
 npm install (или yarn)
 ```
