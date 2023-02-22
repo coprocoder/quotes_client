@@ -13,8 +13,15 @@ const QuotesPage = observer(() => {
 
   useEffect(() => {
     quotes.fetchQuotes();
-    setInterval(() => quotes.fetchQuotes(), 5000);
   }, []);
+
+  useEffect(() => {
+    const updateInterval = setInterval(() => quotes.fetchQuotes(), 5000);
+    if (quotes.modalOpen) {
+      clearInterval(updateInterval);
+    }
+    return () => clearInterval(updateInterval);
+  }, [quotes.modalOpen]);
 
   return (
     <div className="quotesPage">

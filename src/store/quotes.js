@@ -1,6 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 class Quotes {
+  modalOpen = false;
   loading = false;
   error = null;
   quotesObjPart1 = {};

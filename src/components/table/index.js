@@ -1,9 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
-import CustomModal from "../modal/Simple";
+import quotes from "../../store/quotes";
+import CustomModal from "../modal";
 import Waiter from "../waiter";
+import TableRowForm from "./rowForm";
 import "./index.scss";
 
-const usefulKeysConfig = {
+export const usefulKeysConfig = {
   last: {label: "Цена", align: "left"},
   highestBid: {label: "Наивысшее", align: "right"},
   percentChange: {label: "24ч Изменениe", align: "right"},
@@ -13,8 +15,14 @@ const TableWidget = ({data}) => {
   const [selectedRow, setSelectedRow] = useState(null);
   const currencyPairNames = Object.keys(data);
 
-  const handleOpenModal = (row) => setSelectedRow(row);
-  const handleCloseModal = () => setSelectedRow(null);
+  const handleOpenModal = (row) => {
+    quotes.modalOpen = true;
+    setSelectedRow(row);
+  };
+  const handleCloseModal = () => {
+    quotes.modalOpen = false;
+    setSelectedRow(null);
+  };
 
   return (
     <>
@@ -52,8 +60,8 @@ const TableWidget = ({data}) => {
         )}
       </table>
 
-      <CustomModal open={!!selectedRow} onClose={handleCloseModal}>
-        {!!selectedRow && <QuoteModal rowData={selectedRow} />}
+      <CustomModal open={quotes.modalOpen} onClose={handleCloseModal}>
+        {quotes.modalOpen && <TableRowForm rowData={selectedRow} />}
       </CustomModal>
     </>
   );
@@ -73,15 +81,15 @@ const TableRow = ({pairName, rowData, onClick}) => {
         const keyConf = usefulKeysConfig[dataKey];
 
         // Ограничение длины числа до 10 символов
-        const num = parseFloat(rowData[dataKey]);
-        const numVal = num
+        const rawNum = parseFloat(rowData[dataKey]);
+        const normalizedNum = rawNum
           .toFixed(12)
           .replace(/\.?0+$/, "")
           .slice(0, 12);
 
         // Отслеживание динамики изменений значения
         const prev = Number(prevData.current?.[dataKey]);
-        const cur = num;
+        const cur = rawNum;
         const changedUp = cur > prev;
         const changeDown = cur < prev;
 
@@ -97,23 +105,11 @@ const TableRow = ({pairName, rowData, onClick}) => {
                 : null,
             }}
           >
-            {numVal}
+            {normalizedNum}
           </td>
         );
       })}
     </tr>
-  );
-};
-
-const QuoteModal = ({rowData}) => {
-  console.log({rowData});
-  return (
-    <div>
-      <div>Modal</div>
-      {Object.keys(rowData).map((x, i) => (
-        <div key={i}>{rowData[x]}</div>
-      ))}
-    </div>
   );
 };
 

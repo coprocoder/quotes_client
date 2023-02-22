@@ -1,0 +1,18 @@
+@import "../../../Text.scss";
+
+.tableRowForm {
+    background-color: var(--bgPrimary);
+    border-radius: 1rem;
+    padding: 2rem;
+    .tableRowForm-title {
+        @include setFontSize(2);
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .tableRowForm-row {
+        &:nth-child(0) {
+            border-top: none;
+        }
+        border-top: 1px solid var(--table-border);
+    }
+}
