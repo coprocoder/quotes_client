@@ -1,7 +1,7 @@
 @import "./Functions.scss";
 
 html {
-    font-size: calcFluidSize(10, 16, 480, 1280);
+    font-size: calcFluidSize(12, 16, 480, 1280);
 }
 body {
     font-family: "Roboto", sans-serif;

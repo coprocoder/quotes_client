@@ -44,7 +44,7 @@ const QuotesPage = observer(() => {
           }`}
           onClick={() => setTabNum(1)}
         >
-          Котировки 1
+          Котировки А
         </div>
         <div
           className={`quotesPage-tabSelection ${
@@ -52,7 +52,7 @@ const QuotesPage = observer(() => {
           }`}
           onClick={() => setTabNum(2)}
         >
-          Котировки 2
+          Котировки Б
         </div>
       </div>
 
