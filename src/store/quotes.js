@@ -2,6 +2,7 @@ import {makeAutoObservable} from "mobx";
 
 class Quotes {
   loading = false;
+  error = null;
   quotesObjPart1 = {};
   quotesObjPart2 = {};
 
@@ -24,15 +25,23 @@ class Quotes {
       this.quotesObjPart2 = {...this.quotesObjPart2, ...ob2} || {};
     };
 
-    this.loading = true;
+    if (
+      !Object.keys(this.quotesObjPart1).length ||
+      !Object.keys(this.quotesObjPart2).length
+    ) {
+      this.loading = true;
+    }
+
     fetch(url)
       .then((res) => res.json())
       .then((res) => {
         splitQuotesHalf(res);
         this.loading = false;
+        this.error = null;
       })
       .catch((err) => {
         console.log(err);
+        this.error = err;
       });
   }
 }

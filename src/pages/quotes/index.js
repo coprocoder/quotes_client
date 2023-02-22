@@ -23,10 +23,10 @@ const QuotesPage = observer(() => {
           О приложении
         </Link>
         <div className="quotesPage-animIndicator" to="/">
-          {quotes.loading ? (
-            <ClockLoader size={30} />
-          ) : !(quotes.quotesObjPart1 && quotes.quotesObjPart2) ? (
+          {quotes.error ? (
             "Ошибка"
+          ) : quotes.loading ? (
+            <ClockLoader size={30} />
           ) : null}
         </div>
       </div>
@@ -48,29 +48,16 @@ const QuotesPage = observer(() => {
           Котировки 2
         </div>
       </div>
-      {tabNum === 1 ? (
-        <Tab1 data={quotes.quotesObjPart1} />
-      ) : (
-        <Tab2 data={quotes.quotesObjPart2} />
-      )}
+
+      <div className="quotesPage-tab">
+        {tabNum === 1 ? (
+          <TableWidget data={quotes.quotesObjPart1} />
+        ) : (
+          <TableWidget data={quotes.quotesObjPart2} />
+        )}
+      </div>
     </div>
   );
 });
-
-const Tab1 = ({data}) => {
-  return (
-    <div className="quotesPage-tab">
-      <TableWidget data={data} />
-    </div>
-  );
-};
-
-const Tab2 = ({data}) => {
-  return (
-    <div className="quotesPage-tab">
-      <TableWidget data={data} />
-    </div>
-  );
-};
 
 export default QuotesPage;

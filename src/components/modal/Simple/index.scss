@@ -1,0 +1,36 @@
+.customModal-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 9000;
+}
+.customModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    background-color: var(--darkWhite);
+    border-radius: 0.5rem;
+    z-index: 9000;
+    .customModal-header {
+        display: flex;
+        align-items: center;
+        padding: 1em;
+        border-bottom: 1px solid var(--lightGray);
+        .customModal-header-cross {
+            cursor: pointer;
+            font-size: 2em;
+            padding: 0 0.5em;
+        }
+    }
+    .customModal-body {
+        padding: 1em;
+    }
+}

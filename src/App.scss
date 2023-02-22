@@ -9,7 +9,6 @@
 
     --textPrimary: rgb(40, 40, 40);
     --textSecondary: #818181;
-
 }
 
 html,
@@ -48,13 +47,6 @@ body {
 :after,
 :before {
     box-sizing: border-box;
-}
-
-ul {
-    padding: 0;
-}
-li {
-    list-style: none;
 }
 
 a {

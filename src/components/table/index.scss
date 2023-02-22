@@ -35,6 +35,7 @@
                 background-color: var(--bgPrimary);
             }
             td {
+                transition: all 0.5s ease-in;
                 &:nth-child(1) {
                     padding-left: 1rem;
                 }
