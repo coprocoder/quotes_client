@@ -1,37 +1,21 @@
-<!-- ![Alt text](/public/static/images/Screenshot.png "Screenshot") -->
+![Alt text](/public/static/images/Screenshot.png "Screenshot")
 
 ## ОПИСАНИЕ
 
-<h4>Стек технологий:</h4>
+**Котировки валютных пар в режиме онлайн**
+
+API: https://poloniex.com/public?command=returnTicker
+
+Для обхода CORS используется свой [сервер](https://github.com/coprocoder/quotes_server)
+
+**Стек технологий:**
+
 <ul>
 	<li>HTML, SCSS</li>
 	<li>React</li>
  </ul>
 
-
-## УСТАНОВКА
-
-Для проверки того, что node.js установлен, выполните
-
-```
-node -v
-```
-
-### Установка NodeJS на Ubuntu
-
-```
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt install nodejs
-sudo apt install npm
-git clone https://github.com/coprocoder/quotes_client.git
-```
-
-### Установка NodeJS на Windows
-
-- Скачайте [установочный файл](https://nodejs.org), запустите его и выполните все шаги установки.
-
-### Установка проекта
+## Установка проекта
 
 ```
 git clone https://github.com/coprocoder/quotes_client.git
@@ -39,6 +23,27 @@ cd <путь до папки проекта>
 npm install (или yarn)
 ```
 
-## ЗАПУСК
+## Запуск проекта
 
 npm start (или yarn)
+
+## Установка Node.js
+
+Для проверки того, что node.js установлен, выполните
+
+```
+node -v
+```
+
+### Ubuntu
+
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install nodejs
+sudo apt install npm
+```
+
+### Windows
+
+- Скачайте [установочный файл](https://nodejs.org), запустите его и выполните все шаги установки.
