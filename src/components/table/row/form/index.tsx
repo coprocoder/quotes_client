@@ -1,8 +1,15 @@
 import React from "react";
-import {usefulKeysConfig} from "..";
+import {normalizeNum} from "..";
+import {usefulKeysConfig} from "../..";
+import {IQuotesSet, IRowData, NumericalString, TRowKey} from "../../types";
 import "./index.scss";
 
-const TableRowForm = ({rowData}) => {
+interface ITableRow {
+  paramKey: TRowKey;
+  rowData: IRowData;
+}
+
+const TableRowForm = ({rowData}: IQuotesSet) => {
   delete rowData.id;
 
   const title = rowData.pairName;
@@ -14,7 +21,7 @@ const TableRowForm = ({rowData}) => {
       <table>
         <tbody>
           {Object.keys(rowData).map((x, i) => (
-            <TableRow key={i} paramKey={x} rowData={rowData} />
+            <TableRow key={i} paramKey={x as TRowKey} rowData={rowData} />
           ))}
         </tbody>
       </table>
@@ -22,14 +29,9 @@ const TableRowForm = ({rowData}) => {
   );
 };
 
-const TableRow = ({paramKey, rowData}) => {
-  // Ограничение длины числа до 10 символов
-  const rawNum = parseFloat(rowData[paramKey]);
-  const normalizedNum = rawNum
-    .toFixed(12)
-    .replace(/\.?0+$/, "")
-    .slice(0, 12);
-
+const TableRow = ({paramKey, rowData}: ITableRow) => {
+  const param = rowData[paramKey];
+  const {normalizedNum} = normalizeNum(param as NumericalString);
   return (
     <tr className="tableRowForm-row">
       <td>{usefulKeysConfig[paramKey]?.label || paramKey}</td>

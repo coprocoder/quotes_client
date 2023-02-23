@@ -2,17 +2,28 @@ import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
 
+interface IModalProps {
+  title?: string;
+  open?: boolean;
+  onClose?: Function;
+}
+
+type CustomModalProps = React.PropsWithChildren<IModalProps>;
+
 const CustomModal = ({
   children, // Body element
   title = "", // Header element or text
   open = false, // Trigger to show/hide
   onClose = () => {}, // Callback on close modal
-}) => {
-  const startZ = 1000;
-  const [index, setIndex] = useState();
+}: CustomModalProps) => {
+  const startZ: number = 1000;
+  const [index, setIndex] = useState<Number | null>(null);
 
   const el = React.useMemo(() => document.createElement("div"), []);
-  const modal = React.useMemo(() => ReactDOM.createPortal(getContent(), el));
+  const modal = React.useMemo(
+    () => ReactDOM.createPortal(getContent(), el),
+    []
+  );
 
   useEffect(() => {
     document.body.appendChild(el);
@@ -38,7 +49,7 @@ const CustomModal = ({
       <div
         style={{
           visibility: open ? "visible" : "hidden",
-          zIndex: index,
+          zIndex: index as number,
         }}
       >
         <div className="customModal-overlay" onClick={handlerClose} />
@@ -62,7 +73,7 @@ const CustomModal = ({
     );
   }
 
-  function getClass() {
+  function getClass(): string {
     let classList = ["customModal"];
     if (open) {
       classList.push("customModal-open");
@@ -70,7 +81,7 @@ const CustomModal = ({
     return classList.join(" ");
   }
 
-  function getCount() {
+  function getCount(): number {
     return document.querySelectorAll(".customModal-open").length + 1;
   }
 

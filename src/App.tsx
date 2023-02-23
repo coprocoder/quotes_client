@@ -15,16 +15,13 @@ const QuotesPage = loadable(() => import("./pages/quotes"), {
   fallback: <Waiter />,
 });
 
-const NotFound = () => <div>Page Not Found</div>;
-
 function App() {
   return (
     <HashRouter>
       <Routes>
-        <Route exact path="/" element={<AboutPage />} />
+        <Route path="/" element={<AboutPage />} />
         <Route path="/quotes" element={<QuotesPage />} />
         <Route path="/quotes/:id" element={<QuotesPage />} />
-        <Route element={<NotFound />} />
       </Routes>
     </HashRouter>
   );

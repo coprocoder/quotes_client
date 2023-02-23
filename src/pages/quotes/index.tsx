@@ -7,9 +7,13 @@ import quotes from "../../store/quotes";
 
 import "./index.scss";
 
+type PageParams = {
+  id: string | undefined;
+};
+
 const QuotesPage = observer(() => {
-  const {id} = useParams();
-  const [tabNum, setTabNum] = useState(+id || 1);
+  const {id} = useParams<PageParams>();
+  const [tabNum, setTabNum] = useState<Number | undefined>(Number(id) || 1);
 
   useEffect(() => {
     quotes.fetchQuotes();
@@ -29,7 +33,7 @@ const QuotesPage = observer(() => {
         <Link className="quotesPage-backBtn" to="/">
           О приложении
         </Link>
-        <div className="quotesPage-animIndicator" to="/">
+        <div className="quotesPage-animIndicator">
           {quotes.error ? (
             "Ошибка"
           ) : quotes.loading ? (
@@ -57,11 +61,9 @@ const QuotesPage = observer(() => {
       </div>
 
       <div className="quotesPage-tab">
-        {tabNum === 1 ? (
-          <TableWidget data={quotes.quotesObjPart1} />
-        ) : (
-          <TableWidget data={quotes.quotesObjPart2} />
-        )}
+        <TableWidget
+          data={tabNum === 1 ? quotes.quotesObjPart1 : quotes.quotesObjPart2}
+        />
       </div>
     </div>
   );
