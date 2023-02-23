@@ -22,7 +22,7 @@ const CustomModal = ({
   const el = React.useMemo(() => document.createElement("div"), []);
   const modal = React.useMemo(
     () => ReactDOM.createPortal(getContent(), el),
-    []
+    [open, children]
   );
 
   useEffect(() => {

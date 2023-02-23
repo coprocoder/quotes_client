@@ -21,9 +21,11 @@ export const normalizeNum = (param: NumericalString) => {
 
 const TableRow = ({pairName, rowData, onClick}: TableRowProps) => {
   const prevData = useRef(rowData || {});
+  const prevPair = useRef(pairName);
 
   useEffect(() => {
     prevData.current = rowData;
+    prevPair.current = pairName;
   }, [rowData]);
 
   return (
@@ -35,23 +37,29 @@ const TableRow = ({pairName, rowData, onClick}: TableRowProps) => {
         const param = rowData[paramKey as TRowKey];
         const {rawNum, normalizedNum} = normalizeNum(param as NumericalString);
 
-        // Отслеживание динамики изменений значения
-        const prev = Number(prevData.current?.[paramKey as TRowKey]);
-        const cur = rawNum;
-        const changedUp = cur > prev;
-        const changeDown = cur < prev;
-
+        const getBg = () => {
+          let background = "transparent";
+          if (prevPair.current == pairName) {
+            // Отслеживание динамики изменений значения
+            const prev = Number(prevData.current?.[paramKey as TRowKey]);
+            const cur = rawNum;
+            const changedUp = cur > prev;
+            const changeDown = cur < prev;
+            background = changedUp
+              ? "hsl(120deg, 100%, 25%, 0.1)"
+              : changeDown
+              ? "hsl(0deg, 100%, 50%, 0.1)"
+              : "transparent";
+          }
+          return background;
+        };
         return (
           <td
             key={i}
             style={
               {
                 textAlign: keyConf.align,
-                background: changedUp
-                  ? "hsl(120deg, 100%, 25%, 0.1)"
-                  : changeDown
-                  ? "hsl(0deg, 100%, 50%, 0.1)"
-                  : "transparent",
+                background: getBg(),
               } as React.CSSProperties
             }
           >

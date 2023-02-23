@@ -12,6 +12,8 @@
         font-weight: 400;
     }
     &-head {
+        position: sticky;
+        top: 0;
         background-color: var(--table-head-bg);
         color: var(--table-head-text);
         border-collapse: collapse;
@@ -31,6 +33,7 @@
         border-collapse: separate;
         border-spacing: 0;
         tr {
+            cursor: pointer;
             &:hover {
                 background-color: var(--bgPrimary);
             }

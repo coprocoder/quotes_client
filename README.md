@@ -2,11 +2,6 @@
 
 ## ОПИСАНИЕ
 
-Доска событий
-
-1. Автообновление данных с сервера
-2. Мониторинг текущих событий и оповещение с таймером
-
 <h4>Стек технологий:</h4>
 <ul>
 	<li>HTML, SCSS</li>
@@ -29,7 +24,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt install nodejs
 sudo apt install npm
-git clone https://coprocoder.github.io/SportVokrug/
+git clone https://github.com/coprocoder/quotes_client.git
 ```
 
 ### Установка NodeJS на Windows

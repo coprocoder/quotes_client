@@ -21,7 +21,7 @@ const TableRowForm = ({rowData}: IQuotesSet) => {
       <table>
         <tbody>
           {Object.keys(rowData).map((x, i) => (
-            <TableRow key={i} paramKey={x as TRowKey} rowData={rowData} />
+            <RowFormField key={i} paramKey={x as TRowKey} rowData={rowData} />
           ))}
         </tbody>
       </table>
@@ -29,7 +29,7 @@ const TableRowForm = ({rowData}: IQuotesSet) => {
   );
 };
 
-const TableRow = ({paramKey, rowData}: ITableRow) => {
+const RowFormField = ({paramKey, rowData}: ITableRow) => {
   const param = rowData[paramKey];
   const {normalizedNum} = normalizeNum(param as NumericalString);
   return (
