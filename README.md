@@ -12,7 +12,8 @@ API: https://poloniex.com/public?command=returnTicker
 
 <ul>
 	<li>HTML, SCSS</li>
-	<li>React</li>
+	<li>React, TypeScript</li>
+	<li>MobX</li>
  </ul>
 
 ## Установка проекта
