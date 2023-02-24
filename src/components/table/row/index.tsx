@@ -64,6 +64,7 @@ const TableRow = ({pairName, rowData, onClick}: TableRowProps) => {
             }
           >
             {normalizedNum}
+            {keyConf?.postfix}
           </td>
         );
       })}

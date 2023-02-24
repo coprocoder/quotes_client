@@ -31,11 +31,15 @@ const TableRowForm = ({rowData}: IQuotesSet) => {
 
 const RowFormField = ({paramKey, rowData}: ITableRow) => {
   const param = rowData[paramKey];
+  const keyConf = usefulKeysConfig[paramKey];
   const {normalizedNum} = normalizeNum(param as NumericalString);
   return (
     <tr className="tableRowForm-row">
-      <td>{usefulKeysConfig[paramKey]?.label || paramKey}</td>
-      <td style={{paddingLeft: "1rem"}}>{normalizedNum}</td>
+      <td>{keyConf?.label || paramKey}</td>
+      <td style={{paddingLeft: "1rem"}}>
+        {normalizedNum}
+        {keyConf?.postfix}
+      </td>
     </tr>
   );
 };

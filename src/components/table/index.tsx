@@ -11,13 +11,14 @@ export interface IKeyConf {
   [key: string]: {
     label: string;
     align: string;
+    postfix?: string;
   };
 }
 
 export const usefulKeysConfig: IKeyConf = {
   last: {label: "Цена", align: "left"},
   highestBid: {label: "Наивысшее", align: "right"},
-  percentChange: {label: "24ч Изменениe", align: "right"},
+  percentChange: {label: "24ч Изменениe", postfix: "%", align: "right"},
 };
 
 interface TableProps {
