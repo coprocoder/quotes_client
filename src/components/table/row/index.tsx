@@ -5,7 +5,6 @@ import {IRowData, NumericalString, TRowKey} from "../types";
 interface TableRowProps {
   pairName: string;
   rowData: IRowData;
-  // onClick?: (params: any) => any;
   onClick?: () => void;
 }
 
@@ -37,7 +36,7 @@ const TableRow = ({pairName, rowData, onClick}: TableRowProps) => {
         const param = rowData[paramKey as TRowKey];
         const {rawNum, normalizedNum} = normalizeNum(param as NumericalString);
 
-        const getBg = () => {
+        const getBgColor = () => {
           let background = "transparent";
           if (prevPair.current == pairName) {
             // Отслеживание динамики изменений значения
@@ -59,7 +58,7 @@ const TableRow = ({pairName, rowData, onClick}: TableRowProps) => {
             style={
               {
                 textAlign: keyConf.align,
-                background: getBg(),
+                background: getBgColor(),
               } as React.CSSProperties
             }
           >

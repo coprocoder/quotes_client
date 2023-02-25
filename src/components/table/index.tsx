@@ -7,7 +7,7 @@ import "./index.scss";
 import {IQuotesSet, IRowData} from "./types";
 import TableRow from "./row";
 
-export interface IKeyConf {
+interface IKeyConf {
   [key: string]: {
     label: string;
     align: string;
