@@ -1,13 +1,6 @@
 @import "../../Text.scss";
 
 .about {
-    background-color: var(--bgSecondary);
-    margin: auto;
-    max-width: 960px;
-    padding: 2rem;
-    margin: 4em auto;
-    box-shadow: 0px 0px 8px 0px rgba(111, 126, 137, 0.2);
-
     &-title {
         @include setFontSize(1);
         text-align: center;
@@ -31,11 +24,5 @@
                 margin-bottom: 1rem;
             }
         }
-    }
-}
-
-@media screen and (max-width: 960px) {
-    .about {
-        margin: 0 auto;
     }
 }

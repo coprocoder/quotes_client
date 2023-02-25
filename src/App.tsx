@@ -2,6 +2,7 @@ import React from "react";
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import loadable from "@loadable/component";
 
+import AppWrapper from "./components/appWrapper";
 import Waiter from "./components/waiter";
 
 import "./App.scss";
@@ -17,13 +18,15 @@ const QuotesPage = loadable(() => import("./pages/quotes"), {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<AboutPage />} />
-        <Route path="/quotes" element={<QuotesPage />} />
-        <Route path="/quotes/:id" element={<QuotesPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AppWrapper>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AboutPage />} />
+          <Route path="/quotes" element={<QuotesPage />} />
+          <Route path="/quotes/:id" element={<QuotesPage />} />
+        </Routes>
+      </BrowserRouter>
+    </AppWrapper>
   );
 }
 

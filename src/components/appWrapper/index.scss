@@ -1,0 +1,15 @@
+.appWrapper {
+    background-color: var(--bgSecondary);
+    margin: auto;
+    max-width: 960px;
+    padding: 2rem;
+    margin: 4em auto;
+    box-shadow: 0px 0px 8px 0px rgba(111, 126, 137, 0.2);
+}
+
+@media screen and (max-width: 960px) {
+    .appWrapper {
+        margin: 0 auto;
+        height: 100vh;
+    }
+}

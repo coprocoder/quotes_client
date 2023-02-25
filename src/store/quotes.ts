@@ -1,3 +1,4 @@
+import axios from "axios";
 import {makeAutoObservable} from "mobx";
 import {IQuotesSet} from "../components/table/types";
 
@@ -42,12 +43,12 @@ class Quotes implements IQuotes {
       this.loading = true;
     }
 
-    fetch(url)
-      .then((res) => res.json())
+    axios
+      .get(url)
       .then((res) => {
-        splitQuotesHalf(res);
-        this.loading = false;
+        splitQuotesHalf(res.data);
         this.error = null;
+        this.loading = false;
       })
       .catch((err) => {
         console.log(err);
